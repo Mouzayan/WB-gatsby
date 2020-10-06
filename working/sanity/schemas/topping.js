@@ -29,5 +29,8 @@ export default {
       name: 'name',
       vegetarian: 'vegetarian',
     },
+    prepare: (fields) => ({
+      title: `This is the title ${fields.name}`,
+    }),
   },
 };
