@@ -9,8 +9,8 @@ export default {
   icon,
   fields: [
     {
-      name: 'topping',
-      title: 'Topping Name',
+      name: 'name',
+      title: 'Pizza Name',
       type: 'string',
       description: 'Name of the Topping',
     },
@@ -18,7 +18,7 @@ export default {
       name: 'vegetarian',
       title: 'Vegetarian',
       type: 'boolean',
-      description: 'Is this topping vegetarian',
+      description: 'Is this topping vegetarian?',
       options: {
         layout: 'checkbox',
       },
@@ -29,8 +29,8 @@ export default {
       name: 'name',
       vegetarian: 'vegetarian',
     },
-    prepare: (fields) => ({
-      title: `This is the title ${fields.name}`,
+    prepare: ({ name, vegetarian }) => ({
+      title: ` ${name} ${vegetarian ? '🌱 ' : ''}`,
     }),
   },
 };
