@@ -1,3 +1,7 @@
+import dotenv from 'dotenv';
+
+dotenv.config({ path: '.env' });
+
 export default {
   siteMetadata: {
     title: `Slicks Slices`,
@@ -10,8 +14,11 @@ export default {
       // this is the name of the plugin we are adding
       resolve: 'gatsby-source-sanity',
       options: {
-        projectId: ,
-      }
-    }
+        projectId: 'gos5ohby',
+        dataset: 'production',
+        watchMode: true,
+        token: process.env.SANITY_TOKEN,
+      },
+    },
   ],
 };
