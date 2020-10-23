@@ -12,8 +12,19 @@ const PizzaGridStyles = styled.div`
 
 const PizzaStyles = styled.div`
   display: grid;
-  grid-template-rows: subgrid;
-  
+  // code to offset subgrid not being supported by chrome (and other browsers)
+  @supports not (grid-template-rows: subgrid) {
+    // --rows is a variable
+    --rows: auto auto 1fr;
+  }
+  //subgrid not supported by chrome
+  grid-template-rows: var(--rows, subgrid); // we either use the subgrid, or the rows if subgrid not supported. so, check if var --rows exists, otherwise use subgrid as the fallback
+  grid-row: span 3;
+  grid-gap: 1rem;
+  h2,
+  p {
+    margin: 0;
+  }
 `;
 
 function SinglePizza({ pizza }) {
